@@ -29,3 +29,11 @@ Run tests:
 ```
 sbt test
 ```
+
+TODO:
+ - Integration tests, concept:
+     - setup Kafka (external script started prior to test)
+     - prepare sample data in /test/resources
+     - call `numbersProcessingStream(...)`
+     - add client that will read data from Kafka
+     - check results 

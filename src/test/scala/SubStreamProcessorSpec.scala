@@ -1,8 +1,7 @@
-import cats.effect._
 import cats.effect.testing.scalatest.AsyncIOSpec
-import org.scalatest.matchers.should.Matchers
-import org.scalatest.freespec.AsyncFreeSpec
 import fs2.Stream
+import org.scalatest.freespec.AsyncFreeSpec
+import org.scalatest.matchers.should.Matchers
 import wsoczek.project.streams.SubStreamProcessor
 
 class SubStreamProcessorSpec extends AsyncFreeSpec with AsyncIOSpec with Matchers {
@@ -23,7 +22,7 @@ class SubStreamProcessorSpec extends AsyncFreeSpec with AsyncIOSpec with Matcher
         .asserting(_ should contain theSameElementsAs List())
     }
     "should fail when processor with non positive substreams number is created" in {
-      intercept[RuntimeException](SubStreamProcessor(0)).getMessage should startWith ("Invalid input argument")
+      assertThrows[IllegalArgumentException](SubStreamProcessor(0))
     }
   }
 }

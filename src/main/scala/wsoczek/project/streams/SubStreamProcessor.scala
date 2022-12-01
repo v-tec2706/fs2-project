@@ -12,7 +12,8 @@ class SubStreamProcessor private (pipesNumber: Int) {
 }
 
 object SubStreamProcessor {
-  def apply(pipeNumber: Int): SubStreamProcessor =
-    if(pipeNumber > 0) new SubStreamProcessor(pipeNumber)
-    else throw new RuntimeException("Invalid input argument: `pipeNumber` should be greater than zero")
+  def apply(pipeNumber: Int): SubStreamProcessor = {
+    require(pipeNumber > 0, "`pipeNumber` should be greater than zero")
+    new SubStreamProcessor(pipeNumber)
+  }
 }
